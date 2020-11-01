@@ -4,20 +4,15 @@ ourObj={
     both:'70',
 }
 
-let checkStr='2'
-let value;
-let flag;
-const checkValue = function () {
+let checkStr='fit';
 
-    for (let key in ourObj) {
-        value=ourObj[key];
-        if (checkStr == value)
-        {
-            flag='true'
-            break;
-        }
-        else flag='false';
-    }
-   console.log(flag);
+const checkValue = function (obj, key) {
+    return key in obj;
 }
-checkValue();
+
+console.log(checkValue(ourObj, checkStr));
+
+// Вы не правильно поняли задание, нужно было определить, есть ли в объекте свойство с указанным именем. Т.е. искать нужно не по значениям, а по ключам. Кроме того, есть несколько замечаний к самой функции:
+// 1. Переменные value и flag, которые используются внутри функции, объявлены за её пределами. Почему?
+// 2. Функция должна принимать значения для проверки (объект и строку-название ключа) в качестве аргументов, эти значения не должны задаваться просто в коде. Иначе теряется главный смысл функции - возможность переиспользования и универсальность.
+// Выше исправила
